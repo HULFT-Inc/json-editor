@@ -269,8 +269,10 @@ JSONEditor.prototype = {
 
       $.each(self.options.startval, function (key, value) {
         if (typeof value === 'string') {
-          if (self.root.schema.properties[key].format === 'date') {
-            self.options.startval[key] = $.datepicker.formatDate('yy-mm-dd', new Date(value));
+          if (self.root.schema.properties[key] !== undefined) {
+            if (self.root.schema.properties[key].format === 'date') {
+              self.options.startval[key] = $.datepicker.formatDate('yy-mm-dd', new Date(value));
+            }
           }
         } else if (Array.isArray(value)) {
           for (var i = 0; i < value.length; i++) {
