@@ -278,7 +278,9 @@ JSONEditor.prototype = {
           for (var i = 0; i < value.length; i++) {
             $.each(value[i], function (key1, val1) {
               if (key1 === 'date') {
-                self.options.startval[key][i][key1] = $.datepicker.formatDate('yy-mm-dd', new Date(val1));
+                let current_datetime = new Date(val1);
+                let formatted_date = current_datetime.getFullYear() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getDate();
+                self.options.startval[key][i][key1] = formatted_date;
               }
             });
           }
